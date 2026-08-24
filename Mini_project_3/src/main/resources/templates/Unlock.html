@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Unlock Account</title>
+
+</head>
+
+<body>
+
+<h2>Unlock Account</h2>
+
+<p th:text="${msg}"></p>
+
+<form th:action="@{/unlock}"
+method="post">
+
+Email
+
+<input type="email"
+name="email">
+
+<br><br>
+
+Temporary Password
+
+<input type="password"
+name="tempPwd">
+
+<br><br>
+
+New Password
+
+<input type="password"
+name="newPwd">
+
+<br><br>
+
+<button>
+
+Unlock
+
+</button>
+
+</form>
+
+</body>
+
+</html>

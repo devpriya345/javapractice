@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title> Registration</title>
+</head>
+
+<body>
+<h2> User Registration</h2>
+<p th:text = "${msg}"></p>
+
+<form th:action= "@{/regsiter/country}" method=post>
+Country:
+
+<select name="countryId">
+<option value="">
+
+Select country
+</option>
+<option th:each="c:${countries}"
+         th:value="${c.countryId}"
+         th:text="${c.countryName}">
+         </option>
+         </select>
+         
+  <button type= "submit"></button>       //get states
+  </form>
+  
+  <br>
+  State selection----!!
+  <form th:action="@{/register/state}" method=post>
+  <input type="hidden"
+  		name="countryId"
+  		th:value="${selectedCountry}">
+  State
+ <select name="stateId">
+ <option value="">
+ </option>
+ Select state
+ <option th:each="s:${states}"
+ 		th:value="${s.stateId}"
+ 		th:text="${s.stateName}">
+ 		</option>
+ 		</select>
+ 		
+<button type ="submit"></button> 		get cities
+</form>
+
+<br>
+!Regsitration form----!!!
+
+<form th:action="@{/register/save}"
+	  th:object="${user}"
+	  method= "post">
+	  
+	  First Name:
+
+<input type="text"
+       th:field="*{firstName}">
+ <br>
+ Last Name:
+
+<input type="text"
+       th:field="*{lastName}">
+ <br>
+ Email:
+
+<input type="email"
+       th:field="*{email}">
+ <br>
+ phone:
+
+<input type="text"
+       th:field="*{phno}">
+ <br>
+Dob:
+
+<input type="date"
+       th:field="*{dob}">
+ <br>
+ Gender:
+
+<input type="radio"
+       th:field="*{gender}"
+       value="Male">
+
+Male
+
+
+<input type="radio"
+       th:field="*{gender}"
+       value="Female">
+
+Female
+<br>
+<input type="hidden"
+       th:field="*{countryId}"
+	   th:value="${selectedCountry}">
+<input  type="hidden"	
+        th:field="*{stateId}"
+        th:value="${selectedState}">
+        
+ City:
+ 
+ <select th:field="*{cityId}">
+ <option value=""> 
+ </option>
+ 
+ Select city::
+ 
+ 
+<option th:each="c:${cities}"
+        th:value="${c.cityId}"
+        th:text="${c.cityName}">
+
+</option>
+</select>
+<br>
+
+<button type="submit"> Register
+</button>         
+ </form>
+ </body>
+ </html>
+ 
+ 
+ 		
+  		
+  		
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
